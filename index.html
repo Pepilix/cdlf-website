@@ -1,0 +1,1137 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- PREVIEW ONLY: keeps the team preview out of search engines. Remove this line at launch. -->
+<meta name="robots" content="noindex, nofollow">
+<title>Charlie Dallas Lancaster Foundation</title>
+<meta name="description" content="Created in the memory of Charlie Dallas Lancaster, our foundation raises money for mental health and suicide prevention charities across York, North Yorkshire and beyond. Registered charity no. 1195207.">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#FFB224">
+<meta property="og:image" content="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Fonts trimmed to what the page uses: Fraunces upright only, SOFT fixed at 100, opsz 48-144, weights 340-420. -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@48..144,340..420,100&family=Source+Sans+3:wght@400;600;700&family=Caveat+Brush&display=swap" rel="stylesheet">
+<link rel="preload" as="image" type="image/webp" imagesrcset="assets/logo-lettering-400.webp 400w, assets/logo-lettering-700.webp 700w, assets/logo-lettering-1100.webp 1100w" imagesizes="(max-width: 860px) 70vw, 660px" fetchpriority="high">
+<script>
+  /* Hide animated elements only when JS runs and motion is allowed; a fallback timer reveals them if GSAP never loads. */
+  (function () {
+    var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.documentElement.classList.add('js');
+    if (!calm) {
+      document.documentElement.classList.add('motion');
+      window.__revealFallback = setTimeout(function () { document.documentElement.classList.remove('motion'); }, 3500);
+    }
+  })();
+</script>
+<style>
+:root {
+  --sun: #FFB224;          /* logo disc */
+  --sun-deep: #B4700A;     /* data marks, small accents on white */
+  --ink: #15171C;          /* logo lettering */
+  --ink-2: #4A4740;        /* secondary text, 8.9:1 on paper */
+  --ink-3: #6B665C;        /* muted text, 5.6:1 on paper */
+  --paper: #FFFDF8;        /* warm white */
+  --paper-2: #F7F2E8;      /* soft warm grey */
+  --line: #E6DFD1;
+  --help: #1D6A64;         /* calm teal, 6.2:1 with white */
+  --help-ink: #0F4440;
+  --help-wash: #E7F2EF;
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --sans: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --gutter: clamp(16px, 4vw, 56px);
+  /* Section spacing scale: every section uses one of these three. */
+  --space-s: clamp(48px, 6vw, 80px);
+  --space-m: clamp(64px, 8vw, 112px);
+  --space-l: clamp(80px, 10vw, 144px);
+  --max: 1280px;
+  --ease: cubic-bezier(.16, 1, .3, 1);
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+/* No CSS smooth scrolling: it breaks ScrollTrigger's measurements. In-page links glide via JS instead. */
+html { -webkit-text-size-adjust: 100%; }
+section[id], [id="main"] { scroll-margin-top: 100px; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--sans); font-size: 1.125rem; line-height: 1.6;
+  font-feature-settings: "kern", "liga"; text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+@media (max-width: 640px) { body { font-size: 1.0625rem; } }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-underline-offset: .18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+::selection { background: var(--sun); color: var(--ink); }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+.help-surface :focus-visible, .on-dark :focus-visible { outline-color: #fff; }
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: var(--paper-2); }
+::-webkit-scrollbar-thumb { background: #CFC6B4; border-radius: 6px; border: 3px solid var(--paper-2); }
+[hidden] { display: none !important; }   /* component display rules (e.g. .btn) must never un-hide hidden elements */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip { position: absolute; left: 16px; top: -100px; z-index: 100; background: var(--ink); color: #fff; padding: 12px 18px; border-radius: 8px; }
+.skip:focus { top: 12px; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* Type */
+h1, h2, h3 { font-family: var(--serif); font-weight: 400; font-variation-settings: "SOFT" 100, "opsz" 96; letter-spacing: -0.02em; line-height: 1.08; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(2.1rem, 4.4vw, 3.75rem); }
+h3 { font-size: clamp(1.5rem, 2.2vw, 1.9rem); line-height: 1.15; }
+p { margin: 0 0 1em; max-width: 66ch; }
+.lede { font-size: clamp(1.2rem, 1.6vw, 1.35rem); color: var(--ink-2); line-height: 1.55; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .55em; min-height: 48px; padding: 0 1.4em; border-radius: 999px; font: 600 1.0625rem/1 var(--sans); text-decoration: none; border: 1.5px solid transparent; cursor: pointer; transition: background-color .25s, color .25s, border-color .25s, transform .4s var(--ease), box-shadow .4s var(--ease); }
+.btn:hover { transform: translateY(-2px); }
+.btn-donate { background: var(--sun); color: var(--ink); box-shadow: 0 6px 18px -8px rgba(180, 112, 10, .55); }
+.btn-donate:hover { background: #FFBE45; box-shadow: 0 10px 24px -10px rgba(180, 112, 10, .7); }
+.btn-help { background: var(--help); color: #fff; }
+.btn-help:hover { background: var(--help-ink); }
+.btn-quiet { border-color: var(--ink); color: var(--ink); background: transparent; }
+.btn-quiet:hover { background: var(--ink); color: var(--paper); }
+.btn svg { width: 18px; height: 18px; flex: none; }
+
+/* Header */
+/* Floating header bar */
+.site-header { position: sticky; top: 12px; z-index: 50; width: calc(100% - 2 * clamp(10px, 2vw, 24px)); max-width: 1400px; margin: 12px auto 0; background: rgba(255, 255, 255, .94); backdrop-filter: saturate(1.4) blur(12px); -webkit-backdrop-filter: saturate(1.4) blur(12px); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 12px 32px -22px rgba(21, 23, 28, .45); transition: box-shadow .3s; }
+.site-header.scrolled { box-shadow: 0 16px 36px -20px rgba(21, 23, 28, .5); }
+.site-header .wrap { max-width: none; padding: 0 clamp(12px, 2vw, 24px); }
+.bar { display: flex; align-items: center; gap: 24px; height: 68px; }
+.brand { display: flex; align-items: center; flex: none; }
+.brand img { width: 62px; height: auto; }
+.nav { display: flex; gap: clamp(14px, 1.8vw, 28px); margin-left: auto; }
+.nav a { text-decoration: none; font-weight: 600; font-size: 1rem; padding: 10px 0; position: relative; }
+.nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 4px; height: 2px; background: var(--sun); transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease); }
+.nav a:hover::after { transform: scaleX(1); }
+.actions { display: flex; gap: 10px; align-items: center; }
+.actions .btn { min-height: 44px; padding: 0 1.1em; font-size: 1rem; }
+.menu-btn { display: none; width: 44px; height: 44px; border: 0; background: transparent; border-radius: 50%; cursor: pointer; color: var(--ink); }
+.menu-btn svg { width: 26px; height: 26px; margin: auto; }
+@media (max-width: 1080px) {
+  .nav { display: none; }
+  .actions { margin-left: auto; }
+  .menu-btn { display: grid; place-items: center; }
+}
+.actions .btn { white-space: nowrap; }
+.lbl-short { display: none; }
+@media (max-width: 420px) {
+  .brand img { width: 44px; }
+  .actions { gap: 6px; }
+  .actions .btn { padding: 0 .75em; font-size: .9375rem; }
+  .bar { gap: 6px; }
+  .menu-btn { width: 44px; margin-right: -6px; }
+}
+/* Smallest phones (320-359px): shorter help label and tighter header so nothing leaves the bar. */
+@media (max-width: 359px) {
+  .lbl-long { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .lbl-short { display: inline; }
+  .site-header .wrap { padding: 0 10px; }
+  .brand img { width: 40px; }
+  .actions .btn { padding: 0 .7em; font-size: .9rem; }
+  .menu-btn { margin-right: -4px; }
+}
+.mobile-menu { position: fixed; inset: 0; z-index: 60; background: var(--paper); padding: 20px var(--gutter) 40px; display: flex; flex-direction: column; visibility: hidden; opacity: 0; transition: opacity .35s var(--ease), visibility 0s .35s; }
+.mobile-menu.open { visibility: visible; opacity: 1; transition: opacity .35s var(--ease); }
+.mobile-menu .top { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+.mobile-menu nav { margin-top: 6vh; display: grid; gap: 6px; }
+.mobile-menu nav a { font-family: var(--serif); font-size: clamp(2rem, 9vw, 2.75rem); text-decoration: none; line-height: 1.25; padding: 4px 0; font-variation-settings: "SOFT" 100; }
+.mobile-menu .foot { margin-top: auto; display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* Hero */
+.hero { position: relative; padding: var(--space-s) 0 var(--space-m); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+.hero-name { font-family: var(--sans); font-weight: 600; font-size: 1.0625rem; letter-spacing: 0; color: var(--ink-2); margin-bottom: clamp(20px, 3vw, 36px); font-variation-settings: normal; }
+.hero-name-sub { display: block; margin-top: 4px; font-weight: 400; font-size: .9375rem; color: var(--ink-3); max-width: 46ch; line-height: 1.45; }
+.hero-quote { margin: 0; }
+/* Charlie's words, hand-written in the spirit of the logo lettering */
+.hero-quote blockquote { margin: 0; font-family: "Caveat Brush", "Segoe Print", cursive; font-weight: 400; font-size: clamp(2.3rem, 5.2vw, 5.1rem); line-height: 1.1; letter-spacing: 0; }
+.hero-quote blockquote p { max-width: none; margin: 0; }
+.hero-quote .ln { display: block; white-space: nowrap; }
+.hero-quote .w { display: inline-block; white-space: nowrap; }
+.hero-quote .ch { display: inline-block; }
+.hero-quote .q { color: var(--sun-deep); }
+@media (max-width: 560px) { .hero-quote .ln { white-space: normal; display: inline; } .hero-quote .ln::after { content: " "; } }
+.hero-quote figcaption { margin-top: 28px; font-size: 1.0625rem; color: var(--ink-2); display: flex; align-items: center; gap: 14px; }
+.hero-quote figcaption::before { content: ""; width: 40px; height: 1.5px; background: var(--ink); }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(32px, 4vw, 48px); }
+/* The logo, rebuilt: a live painted disc (Three.js) under the original hand lettering */
+.hero-logo { position: relative; justify-self: center; width: min(112%, 660px); aspect-ratio: 1; margin: -4% 0; }
+.hero-logo > * { position: absolute; inset: 0; width: 100%; height: 100%; }
+.sun-canvas { pointer-events: none; }
+.sun-fallback { background: radial-gradient(circle at 44.1% 50%, var(--sun) 32.5%, transparent 32.8%); }
+.sun-canvas + .sun-fallback { display: none; }
+.hero-logo .lettering { z-index: 1; }
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 8px; }
+  .hero-logo { order: -1; width: min(70%, 320px); margin-left: -6%; justify-self: start; }
+}
+
+/* Mission */
+.mission { padding: var(--space-l) 0; }
+.mission-statement { font-family: var(--serif); font-weight: 350; font-variation-settings: "SOFT" 100, "opsz" 72; font-size: clamp(1.7rem, 3.3vw, 2.9rem); line-height: 1.22; letter-spacing: -0.015em; max-width: 30ch; margin: 0 0 clamp(56px, 8vw, 112px); text-wrap: pretty; }
+.mission-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(32px, 6vw, 104px); align-items: end; }
+.mission-photo { margin: 0; }
+.mission-photo img { width: 100%; border-radius: 20px; }
+.mission-photo figcaption, .cap { margin-top: 12px; font-size: .95rem; color: var(--ink-3); }
+.mission-copy h2 { font-size: clamp(1.9rem, 3.2vw, 2.8rem); margin-bottom: 28px; max-width: 18ch; }
+.text-link { font-weight: 600; text-decoration: underline; text-decoration-color: var(--sun); text-decoration-thickness: 3px; text-underline-offset: .25em; }
+.text-link:hover { text-decoration-color: var(--ink); }
+@media (max-width: 860px) { .mission-grid { grid-template-columns: 1fr; } }
+
+/* Ways in */
+.ways { padding: 0 0 var(--space-l); }
+.ways-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: clamp(28px, 4vw, 48px); }
+.bento { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: auto auto; gap: 16px; }
+.tile { border-radius: 24px; padding: clamp(24px, 3vw, 40px); position: relative; overflow: hidden; transition: transform .6s var(--ease), box-shadow .6s var(--ease); }
+.tile:hover { transform: translateY(-4px); box-shadow: 0 24px 40px -28px rgba(21, 23, 28, .45); }
+.tile h3 { margin-bottom: 14px; }
+.tile p { color: inherit; }
+.tile-donate { grid-column: span 7; grid-row: span 2; color: #fff; min-height: 560px; display: flex; flex-direction: column; justify-content: flex-end; background: var(--ink); }
+.tile-donate img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transition: transform 1.2s var(--ease); }
+.tile-donate:hover img { transform: scale(1.03); }
+.tile-donate::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(21,23,28,0) 30%, rgba(21,23,28,.82) 88%); }
+.tile-donate > *:not(img) { position: relative; z-index: 1; }
+.tile-donate h3 { font-size: clamp(2rem, 3.4vw, 3rem); }
+.tile-donate p { max-width: 36ch; }
+.tile-donate .cap-on { position: absolute; top: 18px; left: 18px; z-index: 1; font-size: .9rem; color: #fff; background: rgba(21, 23, 28, .62); padding: 4px 12px; border-radius: 999px; }
+.tile-involved { grid-column: span 5; background: var(--paper-2); }
+.tile-help { grid-column: span 5; background: var(--help); color: #fff; }
+.tile-help a { color: #fff; }
+.tile-list { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 4px; }
+.tile-list a { display: flex; justify-content: space-between; align-items: center; min-height: 44px; text-decoration: none; border-top: 1px solid currentColor; border-color: rgba(21,23,28,.14); font-weight: 600; }
+.tile-help .tile-list a { border-color: rgba(255,255,255,.28); }
+.tile-list a span:last-child { font-weight: 400; opacity: .9; }
+.tile-list svg { width: 18px; height: 18px; }
+.tile-list a:hover span:first-child { text-decoration: underline; }
+@media (max-width: 960px) {
+  .tile-donate, .tile-involved, .tile-help { grid-column: 1 / -1; grid-row: auto; }
+  .tile-donate { min-height: 460px; }
+}
+
+/* Impact */
+.impact { background: var(--paper-2); padding: var(--space-l) 0; }
+.impact-top { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+.impact h2 { margin-bottom: 20px; }
+.figures { display: grid; gap: 0; }
+.figure { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 26px 0; border-top: 1px solid var(--line); }
+.figure:last-child { border-bottom: 1px solid var(--line); }
+.figure strong { font-family: var(--serif); font-weight: 380; font-variation-settings: "SOFT" 100, "opsz" 144; font-size: clamp(2.6rem, 5.4vw, 4.6rem); line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums lining-nums; min-width: 4.2ch; }
+.figure span { color: var(--ink-2); max-width: 34ch; }
+@media (max-width: 860px) { .impact-top { grid-template-columns: 1fr; } }
+.grants { margin-top: clamp(56px, 7vw, 96px); }
+.grants h3 { font-size: 1.35rem; margin-bottom: 6px; }
+.grants .sub { color: var(--ink-3); font-size: 1rem; margin-bottom: 24px; }
+.bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.bars li { display: grid; grid-template-columns: minmax(150px, 13rem) minmax(0, 1fr) 6.5rem; gap: 18px; align-items: center; }
+.bars .name { font-weight: 600; font-size: 1rem; }
+.bars .track { height: 12px; position: relative; }
+.bars .fill { height: 100%; background: var(--sun-deep); border-radius: 0 4px 4px 0; width: var(--w); }
+.bars .val { font-variant-numeric: tabular-nums; text-align: right; color: var(--ink-2); font-size: 1rem; }
+@media (max-width: 640px) {
+  .bars li { grid-template-columns: 1fr auto; gap: 6px 12px; }
+  .bars .track { grid-column: 1 / -1; grid-row: 2; }
+}
+
+/* A Mile a Life */
+.amal { padding: var(--space-l) 0 0; }
+.amal-head { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(28px, 6vw, 96px); align-items: end; margin-bottom: clamp(8px, 1.5vw, 24px); }
+.amal-title { font-size: clamp(3rem, 8.5vw, 7.5rem); letter-spacing: -0.035em; line-height: .95; }
+.amal-dates { font-family: var(--serif); font-size: clamp(1.3rem, 2vw, 1.7rem); color: var(--ink-2); margin-top: 16px; font-variation-settings: "SOFT" 100; }
+.amal-stage { height: 100vh; height: 100svh; display: grid; place-items: center; overflow: hidden; }
+.amal-frame { width: 100%; height: 100%; clip-path: inset(var(--clip, 0%) round 28px); will-change: clip-path; }
+.amal-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 55% 45%; transform: scale(var(--zoom, 1)); will-change: transform; }
+.amal-stage .cap { position: absolute; }
+.amal-body { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(28px, 6vw, 96px); padding: var(--space-m) 0; }
+.amal-body .big { font-family: var(--serif); font-size: clamp(1.5rem, 2.4vw, 2.1rem); line-height: 1.28; font-variation-settings: "SOFT" 100, "opsz" 48; font-weight: 360; max-width: 22ch; }
+.amal-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+/* Montage: big tiles for the high-resolution photos, small tiles for the 600px ones */
+.montage { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-rows: clamp(140px, 15vw, 220px); grid-auto-flow: row dense; gap: 14px; padding-bottom: var(--space-l); }
+.montage figure { position: relative; margin: 0; overflow: hidden; border-radius: 20px; background: var(--paper-2); }
+.montage img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.montage figure:hover img { transform: scale(1.03); }
+.montage figcaption { position: absolute; left: 12px; bottom: 12px; right: 12px; width: fit-content; max-width: calc(100% - 24px); font-size: .9rem; line-height: 1.35; color: #fff; background: rgba(21, 23, 28, .62); padding: 5px 12px; border-radius: 12px; }
+.m-persimmon { grid-column: 1 / 9; grid-row: span 2; }
+.m-persimmon img { object-position: 50% 40%; }
+.m-boy { grid-column: 9 / 13; grid-row: span 3; }
+.m-street { grid-column: 1 / 5; }
+.m-shirts { grid-column: 5 / 9; }
+.m-samms { grid-column: 1 / 5; }
+.m-walker { grid-column: 5 / 13; }
+.m-walker img { object-position: 50% 25%; }
+@media (max-width: 860px) {
+  .amal-head, .amal-body { grid-template-columns: 1fr; }
+  .montage { grid-template-columns: 1fr 1fr; grid-auto-rows: clamp(130px, 38vw, 200px); gap: 10px; }
+  .m-persimmon, .m-walker { grid-column: 1 / -1; grid-row: span 2; }
+  .m-boy { grid-column: 2; grid-row: span 2; }
+  .m-street, .m-shirts, .m-samms { grid-column: 1; grid-row: span 1; }
+  .m-samms { grid-column: 1 / -1; }
+}
+.strava { width: 20px; height: 20px; }
+
+/* Film: full-width rounded card, playing silently on a loop */
+.reel { padding: 0 clamp(10px, 2vw, 24px); }
+.reel-card { position: relative; max-width: 1400px; margin: 0 auto; border-radius: 28px; overflow: hidden; background: var(--paper-2); height: min(56.25vw, calc(100svh - 110px)); min-height: 320px; container-type: size; isolation: isolate; }
+.reel-media { position: absolute; inset: 0; }
+/* "Cover" sizing for a 16:9 source in any card shape. */
+.reel-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .9s var(--ease); }
+.reel-media video.ready { opacity: 1; }
+.reel-media img, .reel-media iframe { position: absolute; top: 50%; left: 50%; width: max(100cqw, 177.78cqh); height: max(100cqh, 56.25cqw); max-width: none; transform: translate(-50%, -50%); border: 0; object-fit: cover; }
+/* The video is zoomed a little past the card edges so YouTube's title bar and logo fall outside it. */
+.reel-media iframe { pointer-events: none; opacity: 0; transform: translate(-50%, -50%) scale(1.2); transition: opacity .9s var(--ease); }
+.reel-media iframe.ready { opacity: 1; }
+/* Blocks pointer events so YouTube's hover chrome never appears, and lifts the title just enough to read. */
+.reel-shade { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(21,23,28,0) 62%, rgba(21,23,28,.38) 100%); }
+.reel-bar { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: clamp(18px, 3vw, 40px); display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; color: #fff; }
+.reel-bar h2 { color: #fff; font-size: clamp(2rem, 4vw, 3.4rem); text-shadow: 0 2px 24px rgba(21, 23, 28, .45); }
+.reel-bar p { color: rgba(255,255,255,.92); margin: 8px 0 0; }
+.reel-controls { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-light { background: #fff; color: var(--ink); }
+.btn-light:hover { background: var(--sun); }
+.btn-outline-light { border-color: rgba(255,255,255,.85); color: #fff; background: rgba(21,23,28,.25); }
+.btn-outline-light:hover { background: #fff; color: var(--ink); }
+.reel :focus-visible { outline-color: #fff; }
+@media (max-width: 640px) { .reel-card { border-radius: 20px; height: auto; aspect-ratio: 4 / 5; min-height: 0; } }
+.btn-outline-light { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+
+/* Watch with sound: the full player in a dialog */
+dialog.film-dialog { border: 0; padding: 0; background: transparent; width: min(1280px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow: visible; }
+dialog.film-dialog::backdrop { background: rgba(21, 23, 28, .82); backdrop-filter: blur(8px); }
+.film-frame { aspect-ratio: 16 / 9; width: 100%; border-radius: 20px; overflow: hidden; background: var(--ink); }
+.film-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+.film-dialog .close { display: flex; align-items: center; gap: 8px; margin: 0 0 12px auto; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 0; background: #fff; color: var(--ink); font: 600 1rem/1 var(--sans); cursor: pointer; }
+.film-dialog .close svg { width: 16px; height: 16px; }
+.film-dialog :focus-visible { outline-color: #fff; }
+
+/* Stay in touch: the one bold brand-colour panel */
+.signup-panel { padding: 0 clamp(10px, 2vw, 24px) var(--space-m); }
+.panel { max-width: 1400px; margin: 0 auto; background: var(--sun); border-radius: 28px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+.panel-copy { padding: clamp(32px, 5vw, 72px); }
+.panel-copy h2 { margin-bottom: 16px; }
+.panel-copy p { color: var(--ink); }
+.panel img { width: 100%; height: 100%; max-height: 520px; object-fit: cover; object-position: 50% 30%; min-height: 320px; }
+.btn-ink { background: var(--ink); color: #fff; }
+.btn-ink:hover { background: #2B2E35; }
+@media (max-width: 860px) { .panel { grid-template-columns: 1fr; } .panel img { max-height: 380px; } }
+
+/* Partners */
+.partners { padding: var(--space-m) 0; }
+.partners-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 40px; }
+.partners-head p { color: var(--ink-2); margin: 0; max-width: 46ch; }
+.logos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.logos li { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.logos a { display: grid; place-items: center; height: 140px; padding: 24px; background: #fff; transition: background-color .3s; }
+.logos a:hover { background: var(--paper-2); }
+.logos img { max-height: 64px; max-width: 140px; width: auto; object-fit: contain; }
+
+/* Footer */
+.site-footer { background: var(--paper-2); padding: var(--space-m) 0 40px; border-top: 1px solid var(--line); }
+.foot-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 4fr); gap: clamp(32px, 5vw, 72px); }
+.foot-grid h2 { font-size: 1.5rem; margin-bottom: 14px; }
+.signup { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; max-width: 480px; }
+.signup label { flex-basis: 100%; font-weight: 600; font-size: 1rem; }
+.signup input { flex: 1 1 220px; min-height: 48px; border: 1.5px solid var(--ink); border-radius: 999px; padding: 0 20px; font: inherit; background: #fff; color: var(--ink); }
+.signup input::placeholder { color: var(--ink-3); }
+.signup input:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.signup-msg { flex-basis: 100%; margin: 4px 0 0; font-size: 1rem; font-weight: 600; color: var(--ink); min-height: 1.5em; }
+.foot-links { list-style: none; padding: 0; margin: 0; display: grid; gap: 2px; }
+.foot-links a { display: inline-flex; min-height: 40px; align-items: center; text-decoration: none; font-weight: 600; }
+.foot-links a:hover { text-decoration: underline; }
+.foot-help { background: var(--help); color: #fff; border-radius: 10px; padding: 26px; }
+.foot-help h2 { color: #fff; }
+.foot-help a { color: #fff; }
+.foot-help .num { font-size: 1.5rem; font-weight: 700; display: block; text-decoration: none; min-height: 44px; line-height: 44px; }
+.foot-help .num:hover { text-decoration: underline; }
+.legal { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; font-size: .95rem; color: var(--ink-2); }
+.legal p { margin: 0; max-width: none; }
+.social { display: flex; gap: 8px; margin-top: 16px; }
+.social a { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--ink); transition: background-color .25s, color .25s; }
+.social a:hover { background: var(--ink); color: var(--paper); }
+.social svg { width: 20px; height: 20px; }
+@media (max-width: 960px) { .foot-grid { grid-template-columns: 1fr; } }
+
+/* Crisis dialog */
+dialog.crisis { border: 0; padding: 0; border-radius: 14px; width: min(640px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); background: var(--paper); color: var(--ink); box-shadow: 0 40px 80px -30px rgba(21, 23, 28, .5); }
+dialog.crisis::backdrop { background: rgba(21, 23, 28, .55); backdrop-filter: blur(3px); }
+.crisis-inner { padding: clamp(24px, 4vw, 40px); }
+.crisis-top { display: flex; justify-content: space-between; align-items: start; gap: 16px; }
+.crisis h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); }
+.crisis .close { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--ink); background: transparent; cursor: pointer; display: grid; place-items: center; flex: none; color: var(--ink); }
+.crisis .close svg { width: 18px; height: 18px; }
+.crisis .now { margin: 14px 0 22px; font-weight: 600; }
+.crisis-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.crisis-tile { display: block; text-decoration: none; background: var(--help-wash); border-radius: 10px; padding: 16px 18px; min-height: 44px; transition: background-color .2s; }
+.crisis-tile:hover { background: #D5EAE5; }
+.crisis-tile .who { display: block; font-weight: 600; font-size: 1rem; color: var(--help-ink); }
+.crisis-tile .how { display: block; font-size: 1.6rem; font-weight: 700; line-height: 1.2; margin: 2px 0; color: var(--ink); font-variant-numeric: tabular-nums; }
+.crisis-tile .when { display: block; font-size: .95rem; color: var(--ink-2); }
+.crisis .more { display: inline-block; margin-top: 20px; }
+.crisis-tile:last-child:nth-child(odd) { grid-column: 1 / -1; }
+@media (max-width: 520px) { .crisis-tiles { grid-template-columns: 1fr; } }
+
+/* Motion defaults: visible unless JS + motion are both on */
+.motion [data-reveal] { opacity: 0; }
+.motion .hero-quote blockquote, .motion .hero-name, .motion .hero-cta, .motion .hero-logo .lettering, .motion .hero-quote figcaption { opacity: 0; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="wrap bar">
+    <a class="brand" href="index.html" aria-label="Charlie Dallas Lancaster Foundation, home">
+      <img src="assets/logo.png" alt="" width="260" height="196">
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="https://cdlf.uk/about-charlie/">Charlie's story</a>
+      <a href="https://cdlf.uk/fundraising-donate/">Get involved</a>
+      <a href="https://cdlf.uk/beneficiaries/">Impact</a>
+      <a href="https://cdlf.uk/a-mile-a-life/">A Mile a Life</a>
+      <a href="https://cdlf.uk/our-team/">About</a>
+    </nav>
+    <div class="actions">
+      <a class="btn btn-help" href="help.html" data-crisis><span class="lbl-long">Need help now?</span><span class="lbl-short" aria-hidden="true">Need help?</span></a>
+      <a class="btn btn-donate" href="https://cdlf.uk/donate/">Donate</a>
+    </div>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="top">
+    <a class="brand" href="index.html" aria-label="Home"><img src="assets/logo.png" alt="" width="58"></a>
+    <button class="menu-btn" type="button" data-close-menu aria-label="Close menu" style="display:grid">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav aria-label="Mobile">
+    <a href="https://cdlf.uk/about-charlie/">Charlie's story</a>
+    <a href="https://cdlf.uk/fundraising-donate/">Get involved</a>
+    <a href="https://cdlf.uk/beneficiaries/">Impact</a>
+    <a href="https://cdlf.uk/a-mile-a-life/">A Mile a Life</a>
+    <a href="https://cdlf.uk/our-team/">About</a>
+  </nav>
+  <div class="foot">
+    <a class="btn btn-help" href="help.html" data-crisis>Need help now?</a>
+    <a class="btn btn-donate" href="https://cdlf.uk/donate/">Donate</a>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- Hero: Charlie and his words -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 class="hero-name" id="hero-title">Charlie Dallas Lancaster Foundation <span class="hero-name-sub">Supporting mental health and suicide prevention charities across York, North Yorkshire and beyond</span></h1>
+        <figure class="hero-quote">
+          <blockquote>
+            <p><span class="ln"><span class="q">&ldquo;</span>If you can simply make</span>
+              <span class="ln">someone smile to bring</span>
+              <span class="ln">a moment's happiness</span>
+              <span class="ln">it could be enough</span>
+              <span class="ln">to change their day.<span class="q">&rdquo;</span></span></p>
+          </blockquote>
+          <figcaption>Charlie Dallas Lancaster</figcaption>
+        </figure>
+        <div class="hero-cta">
+          <a class="btn btn-donate" href="https://cdlf.uk/donate/">Make a donation</a>
+          <a class="btn btn-quiet" href="https://cdlf.uk/about-charlie/">Read Charlie's story</a>
+        </div>
+      </div>
+      <div class="hero-logo">
+        <canvas class="sun-canvas" aria-hidden="true"></canvas>
+        <div class="sun-fallback" aria-hidden="true"></div>
+        <img class="lettering" src="assets/logo-lettering-700.webp" srcset="assets/logo-lettering-400.webp 400w, assets/logo-lettering-700.webp 700w, assets/logo-lettering-1100.webp 1100w" sizes="(max-width: 860px) 70vw, 660px" width="1100" height="1100" alt="Charlie. Dallas. Lancaster. Foundation." fetchpriority="high">
+      </div>
+    </div>
+  </section>
+
+  <!-- Film: full width, plays silently on a loop; viewers can pause it or turn the sound on -->
+  <section class="reel" aria-labelledby="film-title">
+    <!-- Silent loop source, best first:
+         data-mp4   a short (15-30s) self-hosted clip, e.g. "assets/film-loop.mp4": no YouTube player at all.
+         otherwise  the YouTube film; data-start / data-end pick the stretch (seconds) that loops. end 0 = whole film.
+         "Watch with sound" always opens the full YouTube film. -->
+    <!-- 2:41-2:56 is one continuous wide shot (the same set-up as the poster), so the loop never reaches
+         the film's photo montages on black and the poster-to-video fade is near invisible. -->
+    <div class="reel-card" data-yt="Jhs9e5obU1c" data-start="161" data-end="176">
+      <div class="reel-media">
+        <img src="https://i.ytimg.com/vi/Jhs9e5obU1c/maxresdefault.jpg" srcset="https://i.ytimg.com/vi/Jhs9e5obU1c/sddefault.jpg 640w, https://i.ytimg.com/vi/Jhs9e5obU1c/maxresdefault.jpg 1280w" sizes="100vw" alt="" width="1280" height="720">
+      </div>
+      <div class="reel-shade" aria-hidden="true"></div>
+      <div class="reel-bar">
+        <h2 id="film-title">Our film</h2>
+        <div class="reel-controls">
+          <button class="btn btn-light" type="button" data-reel="sound">Watch with sound</button>
+          <button class="btn btn-outline-light" type="button" data-reel="pause" hidden>Pause</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="mission" aria-labelledby="mission-title">
+    <div class="wrap">
+      <p class="mission-statement" data-words>Created in the memory of Charlie Dallas Lancaster, a kind, caring devoted family man with a desire to help others, our foundation exists to support a variety of charities across York, North Yorkshire and beyond.</p>
+      <div class="mission-grid">
+        <figure class="mission-photo" data-reveal>
+          <img src="assets/charlie-family-1024.webp" srcset="assets/charlie-family-640.webp 640w, assets/charlie-family-1024.webp 1024w, assets/charlie-family-1268.webp 1268w" sizes="(max-width: 860px) 100vw, 42vw" width="1268" height="1400" loading="lazy" alt="Charlie as a boy in the back garden with his family: his grandma, his mum and his two sisters in red school jumpers.">
+          <figcaption>Charlie as a boy with Grandma Dallas, Mum, Victoria and Alexandra.</figcaption>
+        </figure>
+        <div class="mission-copy" data-reveal>
+          <h2 id="mission-title">Carrying on the great work Charlie was dedicated to his whole adult life.</h2>
+          <p class="lede">We are a Charitable Foundation, fundraising to allow the provision of much needed help and support to organisations and individuals working within the Mental Health and Suicide Prevention sphere.</p>
+          <p>Charities which support mental health were close to Charlie's heart. He was an advocate for raising awareness and encouraging others to speak out about their own struggles.</p>
+          <a class="text-link" href="https://cdlf.uk/about-charlie/">Read more about Charlie's charity work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three ways in -->
+  <section class="ways" aria-labelledby="ways-title">
+    <div class="wrap">
+      <div class="ways-head" data-reveal>
+        <h2 id="ways-title">How you can help, and get help</h2>
+      </div>
+      <div class="bento">
+        <article class="tile tile-donate" data-reveal>
+          <img src="assets/walk-2023-luke-768.webp" srcset="assets/walk-2023-luke-640.webp 640w, assets/walk-2023-luke-768.webp 768w" sizes="(max-width: 960px) 100vw, 56vw" width="768" height="1024" loading="lazy" alt="A cyclist in Paris holds up a white Charlie Dallas Lancaster Foundation T-shirt in front of the Eiffel Tower.">
+          <span class="cap-on">Luke in Paris, 2023</span>
+          <h3>Donate</h3>
+          <p>100% of our proceeds go to the wonderful charities we support. Give once or every month, by card or PayPal. No account needed.</p>
+          <div><a class="btn btn-donate" href="https://cdlf.uk/donate/">Make a donation</a></div>
+        </article>
+        <article class="tile tile-involved" data-reveal>
+          <h3>Get involved</h3>
+          <p>Fundraise in your own way, or join Charlie's army on the walk.</p>
+          <ul class="tile-list">
+            <li><a href="https://www.justgiving.com/cdlf"><span>Set up a JustGiving page</span><span>justgiving.com/cdlf</span></a></li>
+            <li><a href="#a-mile-a-life"><span>Walk A Mile a Life</span><span>23 May to 23 June</span></a></li>
+            <li><a href="mailto:info@cdlf.uk"><span>Run your own event</span><span>info@cdlf.uk</span></a></li>
+          </ul>
+        </article>
+        <article class="tile tile-help help-surface" data-reveal>
+          <h3>Need help now?</h3>
+          <p>If you or someone you know is in crisis, you can talk to someone today. It's free and confidential.</p>
+          <ul class="tile-list">
+            <li><a href="tel:116123"><span>Samaritans, any time</span><span>116 123</span></a></li>
+            <li><a href="sms:85258?&amp;body=SHOUT"><span>Text SHOUT</span><span>85258</span></a></li>
+            <li><a href="help.html"><span>All help and support</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact -->
+  <section class="impact" aria-labelledby="impact-title">
+    <div class="wrap">
+      <div class="impact-top">
+        <div data-reveal>
+          <h2 id="impact-title">Where your money goes</h2>
+          <p class="lede">We always want to be transparent about exactly what happens to the money we raise.</p>
+          <a class="text-link" href="https://cdlf.uk/beneficiaries/">See every grant we've made</a>
+        </div>
+        <div class="figures">
+          <div class="figure" data-reveal><strong data-count="37688" data-prefix="£">£37,688</strong><span>given to mental health charities since June 2021.</span></div>
+          <div class="figure" data-reveal><strong data-count="92">92</strong><span>support boards placed in 2023, in GP surgeries, gyms, classrooms, clinics and shopping centres. Each one carries a QR code to our help page.</span></div>
+          <div class="figure" data-reveal><strong data-count="100" data-suffix="%">100%</strong><span>of our proceeds go to the charities we support.</span></div>
+        </div>
+      </div>
+
+      <div class="grants" data-reveal>
+        <h3>Grants by charity, June 2021 to 2023</h3>
+        <p class="sub">Total £37,688. Figures rounded to the nearest pound.</p>
+        <ul class="bars">
+          <li><span class="name">Menfulness</span><span class="track"><span class="fill" style="--w:100%"></span></span><span class="val">£12,105</span></li>
+          <li><span class="name">York Mind</span><span class="track"><span class="fill" style="--w:85%"></span></span><span class="val">£10,288</span></li>
+          <li><span class="name">York SASH</span><span class="track"><span class="fill" style="--w:84.3%"></span></span><span class="val">£10,207</span></li>
+          <li><span class="name">Private counselling</span><span class="track"><span class="fill" style="--w:22.2%"></span></span><span class="val">£2,688</span></li>
+          <li><span class="name">YoungMinds</span><span class="track"><span class="fill" style="--w:11.2%"></span></span><span class="val">£1,360</span></li>
+          <li><span class="name">The Jordan Legacy</span><span class="track"><span class="fill" style="--w:8.6%"></span></span><span class="val">£1,040</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- A Mile a Life -->
+  <section class="amal" id="a-mile-a-life" aria-labelledby="amal-title">
+    <div class="wrap amal-head">
+      <div data-reveal>
+        <h2 class="amal-title" id="amal-title">A Mile a Life</h2>
+        <p class="amal-dates">23 May to 23 June, every year. Charlie's birthday is 23 June.</p>
+      </div>
+      <p class="lede" data-reveal>Our largest event. Together, we cover a mile for each life lost to suicide the year prior. A number that is so difficult to try and understand.</p>
+    </div>
+    <div class="amal-stage">
+      <div class="amal-frame">
+        <img src="assets/walk-2022-1200.webp" srcset="assets/walk-2022-640.webp 640w, assets/walk-2022-1024.webp 1024w, assets/walk-2022-1200.webp 1200w" sizes="100vw" width="1200" height="800" loading="lazy" alt="Walkers in white CDLF T-shirts on a sunny street in York, seen from behind, with a timber-framed building ahead.">
+      </div>
+    </div>
+    <div class="wrap">
+      <p class="cap">A Mile a Life, 2022.</p>
+      <div class="amal-body">
+        <p class="big" data-reveal>It brings a feeling of togetherness, something Charlie always created when he was around people. Anyone can get involved.</p>
+        <div data-reveal>
+          <p>All miles are linked to our club on Strava. We encourage you to get outdoors and enjoy the little things: join the community, join a friend or walk alone and enjoy the fresh air.</p>
+          <div class="amal-actions">
+            <a class="btn btn-donate" href="https://www.strava.com/clubs/1048791">
+              <svg class="strava" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.4 17.9l-2.1-4.1h-3.1l5.2 10.2 5.1-10.2h-3.1z" opacity=".6"/><path d="M10.4 0L3.5 13.8h4.1l2.8-5.5 2.8 5.5h4z"/></svg>
+              Join our Strava club
+            </a>
+            <a class="btn btn-quiet" href="https://cdlf.uk/a-mile-a-life/">More about the walk</a>
+          </div>
+        </div>
+      </div>
+      <!-- A Mile a Life montage -->
+      <div class="montage" role="list" aria-label="Photos from A Mile a Life">
+        <figure class="m-persimmon" role="listitem">
+          <img src="assets/amal-persimmon-2023-1024.webp" srcset="assets/amal-persimmon-2023-640.webp 640w, assets/amal-persimmon-2023-1024.webp 1024w, assets/amal-persimmon-2023-1600.webp 1600w" sizes="(max-width: 860px) 100vw, 62vw" width="1600" height="1067" loading="lazy" alt="A large group of walkers in CDLF T-shirts cheering on the steps of York Minster, behind a £5,000 cheque from Persimmon Homes made out to the Charlie Dallas Lancaster Foundation.">
+          <figcaption>Persimmon Homes' £5,000 cheque at York Minster, 23 June 2023</figcaption>
+        </figure>
+        <figure class="m-boy" role="listitem">
+          <img src="assets/amal-bemorecharlie-768.webp" srcset="assets/amal-bemorecharlie-480.webp 480w, assets/amal-bemorecharlie-768.webp 768w, assets/amal-bemorecharlie-1000.webp 1000w" sizes="(max-width: 860px) 50vw, 30vw" width="1000" height="1500" loading="lazy" alt="A young boy in a cap sits on the grass, seen from behind, wearing a CDLF T-shirt printed with #bemorecharlie.">
+          <figcaption>#bemorecharlie</figcaption>
+        </figure>
+        <figure class="m-street" role="listitem">
+          <img src="assets/amal-york-street-600.webp" width="600" height="400" loading="lazy" alt="Walkers in CDLF T-shirts heading down a narrow cobbled street in York.">
+          <figcaption>Walking through York</figcaption>
+        </figure>
+        <figure class="m-shirts" role="listitem">
+          <img src="assets/amal-shirts-600.webp" width="600" height="400" loading="lazy" alt="Close-up of the backs of walkers' white T-shirts printed with the CDLF logo and www.cdlf.uk.">
+          <figcaption>Charlie's army</figcaption>
+        </figure>
+        <figure class="m-samms" role="listitem">
+          <img src="assets/amal-lancaster-samms-600.webp" width="600" height="400" loading="lazy" alt="Walkers in CDLF T-shirts stop outside the Lancaster Samms office in York, where a white flower wreath hangs on the door.">
+          <figcaption>Stopping at Lancaster Samms, the estate agency Charlie co-founded</figcaption>
+        </figure>
+        <figure class="m-walker" role="listitem">
+          <img src="assets/walk-2023-68-1024.webp" srcset="assets/walk-2023-68-640.webp 640w, assets/walk-2023-68-1024.webp 1024w, assets/walk-2023-68-1600.webp 1600w" sizes="(max-width: 860px) 100vw, 62vw" width="1800" height="1200" loading="lazy" alt="A walker in a CDLF T-shirt with sunglasses, hands on hips, in dappled woodland sunshine.">
+          <figcaption>A Mile a Life, 2023</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="partners" aria-labelledby="partners-title">
+    <div class="wrap">
+      <div class="partners-head" data-reveal>
+        <h2 id="partners-title">Charities we work with</h2>
+        <p>The money you raise goes to these six organisations, in York and across the UK.</p>
+      </div>
+      <ul class="logos" data-reveal>
+        <li><a href="https://www.yorkmind.org.uk/"><img src="assets/p-yorkmind.png" width="425" height="144" alt="York Mind" loading="lazy"></a></li>
+        <li><a href="https://www.sash-uk.org.uk/"><img src="assets/p-sash.png" width="336" height="163" alt="SASH" loading="lazy"></a></li>
+        <li><a href="https://menfulness.org/"><img src="assets/p-menfulness.png" width="300" height="168" alt="Menfulness" loading="lazy"></a></li>
+        <li><a href="https://www.youngminds.org.uk/"><img src="assets/p-youngminds.png" width="200" height="133" alt="YoungMinds" loading="lazy"></a></li>
+        <li><a href="https://www.ripplesuicideprevention.com/"><img src="assets/p-ripple.png" width="200" height="140" alt="R;pple" loading="lazy"></a></li>
+        <li><a href="https://thejordanlegacy.com/"><img src="assets/p-jordan.jpg" width="610" height="428" alt="The Jordan Legacy" loading="lazy"></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Stay in touch -->
+  <section class="signup-panel" aria-labelledby="signup-title">
+    <div class="panel" data-reveal>
+      <div class="panel-copy">
+        <h2 id="signup-title">Stay in touch</h2>
+        <p class="lede" style="color:var(--ink)">Subscribe to our mailing list for news about A Mile a Life, our events and where the money goes.</p>
+        <form class="signup" novalidate>
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          <button class="btn btn-ink" type="submit">Subscribe</button>
+          <p class="signup-msg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+      <img src="assets/charlie-suit-1024.webp" srcset="assets/charlie-suit-640.webp 640w, assets/charlie-suit-1024.webp 1024w, assets/charlie-suit-1254.webp 1254w" sizes="(max-width: 860px) 100vw, 45vw" width="1254" height="1254" loading="lazy" alt="Charlie smiling broadly in a dark suit and tie, black and white portrait.">
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img src="assets/logo.png" alt="Charlie Dallas Lancaster Foundation" width="120" style="width:120px">
+        <p style="margin-top:18px">Supporting charities across North Yorkshire.</p>
+        <div class="social">
+          <a href="https://www.facebook.com/CDLF.UK/" aria-label="CDLF on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8v3h2.6V21z"/></svg></a>
+          <a href="https://www.instagram.com/c.d.l.foundation/" aria-label="CDLF on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+      <nav aria-label="Footer">
+        <ul class="foot-links">
+          <li><a href="https://cdlf.uk/about-charlie/">Charlie's story</a></li>
+          <li><a href="https://cdlf.uk/fundraising-donate/">Get involved</a></li>
+          <li><a href="https://cdlf.uk/beneficiaries/">Impact</a></li>
+          <li><a href="https://cdlf.uk/a-mile-a-life/">A Mile a Life</a></li>
+          <li><a href="https://cdlf.uk/our-team/">About us</a></li>
+          <li><a href="https://cdlf.uk/donate/">Donate</a></li>
+          <li><a href="mailto:info@cdlf.uk">info@cdlf.uk</a></li>
+        </ul>
+      </nav>
+      <div class="foot-help help-surface">
+        <h2>Need help now?</h2>
+        <p>Samaritans, any time, from any phone:</p>
+        <a class="num" href="tel:116123">116 123</a>
+        <p style="margin-top:12px">Text SHOUT to</p>
+        <a class="num" href="sms:85258?&amp;body=SHOUT">85258</a>
+        <p style="margin:14px 0 0"><a href="help.html">More help and support</a></p>
+      </div>
+    </div>
+    <div class="legal">
+      <p>&copy; 2026 Charlie Dallas Lancaster Foundation. Registered charity no. 1195207.</p>
+      <p>Trustees: Victoria Taylor, Alexandra Lancaster, Gemma Stanham, Oliver Bell-Syer.</p>
+      <p><a href="https://cdlf.uk/privacy-policy/">Privacy policy</a></p>
+    </div>
+  </div>
+</footer>
+
+<dialog class="film-dialog" id="film-dialog" aria-label="Our film, with sound">
+  <button class="close" type="button" data-close-film>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    Close
+  </button>
+  <div class="film-frame"></div>
+</dialog>
+
+<!-- Crisis numbers overlay. The trigger links to help.html, so it still works without JavaScript. -->
+<dialog class="crisis" id="crisis" aria-labelledby="crisis-title">
+  <div class="crisis-inner">
+    <div class="crisis-top">
+      <h2 id="crisis-title">Need help now?</h2>
+      <button class="close" type="button" data-close-crisis aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <p class="now">If you are in immediate danger, call 999.</p>
+    <div class="crisis-tiles">
+      <a class="crisis-tile" href="tel:116123"><span class="who">Samaritans</span><span class="how">116 123</span><span class="when">Any time, from any phone</span></a>
+      <a class="crisis-tile" href="sms:85258?&amp;body=SHOUT"><span class="who">Shout</span><span class="how">Text SHOUT to 85258</span><span class="when">Any time, day or night</span></a>
+      <a class="crisis-tile" href="tel:0800585858"><span class="who">CALM</span><span class="how">0800 58 58 58</span><span class="when">5pm to midnight, every day</span></a>
+    </div>
+    <a class="text-link more" href="help.html">All help and support</a>
+  </div>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
+
+<script>
+/* ---------- UI: header, menu, crisis overlay, video facade, signup ---------- */
+(function () {
+  var header = document.querySelector('.site-header');
+  var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 8); };
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  // Smooth in-page links (except the skip link, which should jump straight to the content).
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#"]');
+    if (!a || a.classList.contains('skip') || a.getAttribute('href') === '#') return;
+    var target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    var calmNav = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    target.scrollIntoView({ behavior: calmNav ? 'auto' : 'smooth', block: 'start' });
+    history.pushState(null, '', a.getAttribute('href'));
+  });
+
+  var menu = document.getElementById('mobile-menu');
+  var openBtn = document.querySelector('.bar .menu-btn');
+  function setMenu(open) {
+    menu.classList.toggle('open', open);
+    menu.setAttribute('aria-hidden', String(!open));
+    openBtn.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+    (open ? menu.querySelector('nav a') : openBtn).focus();
+  }
+  openBtn.addEventListener('click', function () { setMenu(true); });
+  menu.querySelector('[data-close-menu]').addEventListener('click', function () { setMenu(false); });
+  menu.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  var dlg = document.getElementById('crisis');
+  if (dlg && typeof dlg.showModal === 'function') {
+    document.querySelectorAll('[data-crisis]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (menu.classList.contains('open')) setMenu(false);
+        dlg.showModal();
+      });
+    });
+    dlg.querySelector('[data-close-crisis]').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  }
+
+  /* Film card: a silent, chrome-free loop (browsers only allow muted autoplay).
+     The poster sits underneath; the video fades in only once YouTube reports it is really playing,
+     and fades back to the poster just before each loop, so the card never shows black or a spinner.
+     data-start / data-end on the card pick which part of the film loops (seconds; end 0 = whole film).
+     "Watch with sound" opens the full player in a dialog. Reduced motion: poster only, no loop. */
+  var card = document.querySelector('.reel-card');
+  if (card) {
+    var id = card.dataset.yt, media = card.querySelector('.reel-media');
+    var START = +card.dataset.start || 0, END = +card.dataset.end || 0;
+    var soundBtn = card.querySelector('[data-reel="sound"]'), pauseBtn = card.querySelector('[data-reel="pause"]');
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Phones and data-saving visitors get the poster and a tap-to-watch button instead of the streaming loop.
+    var conn = navigator.connection || {};
+    var saveData = conn.saveData || /(^|-)2g|3g/.test(conn.effectiveType || '');
+    var phone = window.matchMedia('(max-width: 768px), (hover: none) and (pointer: coarse)').matches;
+    if (phone || saveData) {
+      still = true;
+      soundBtn.textContent = 'Watch the film';
+    }
+    var frame = null, paused = false, userPaused = false, heard = false;
+    var yt = { state: -1, t: 0, dur: 0, seeking: false };
+    var embed = 'https://www.youtube-nocookie.com/embed/' + id;
+
+    function send(func, args) {
+      if (frame && frame.contentWindow) frame.contentWindow.postMessage(JSON.stringify({ event: 'command', func: func, args: args || [] }), '*');
+    }
+    // Preferred: a short self-hosted clip (data-mp4) plays with no third-party player at all.
+    var clip = null;
+    function setPaused(p) {
+      paused = p;
+      if (clip) { p ? clip.pause() : clip.play().catch(function () {}); }
+      else send(p ? 'pauseVideo' : 'playVideo');
+      pauseBtn.textContent = p ? 'Play' : 'Pause';
+    }
+    function startClip() {
+      clip = document.createElement('video');
+      clip.src = card.dataset.mp4;
+      clip.muted = true; clip.loop = true; clip.playsInline = true; clip.autoplay = true;
+      clip.setAttribute('aria-hidden', 'true');
+      clip.addEventListener('playing', function () { clip.classList.add('ready'); }, { once: true });
+      media.appendChild(clip);
+      frame = clip;   // lets the scroll observer below treat it like the YouTube loop
+      pauseBtn.hidden = false;
+    }
+    function sync() {
+      var end = END || yt.dur;
+      var live = (yt.state === 1 || yt.state === 2) && yt.t >= START + 0.3 && (!end || yt.t < end - 0.9);
+      frame.classList.toggle('ready', live);
+      // Loop ourselves (rather than YouTube's loop) so the restart happens behind the poster.
+      if (!yt.seeking && ((end && yt.t >= end - 0.5) || yt.state === 0)) {
+        yt.seeking = true;
+        send('seekTo', [START, true]); if (!paused) send('playVideo');
+        setTimeout(function () { yt.seeking = false; }, 1500);
+      }
+    }
+    window.addEventListener('message', function (e) {
+      if (!frame || e.source !== frame.contentWindow || typeof e.data !== 'string') return;
+      var d; try { d = JSON.parse(e.data); } catch (_) { return; }
+      heard = true;
+      var info = d.info || {};
+      if (typeof info.playerState === 'number') yt.state = info.playerState;
+      if (typeof info.currentTime === 'number') yt.t = info.currentTime;
+      if (typeof info.duration === 'number' && info.duration > 0) yt.dur = info.duration;
+      sync();
+    });
+    function startLoop() {
+      frame = document.createElement('iframe');
+      frame.src = embed + '?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&rel=0&playsinline=1&iv_load_policy=3&cc_load_policy=0' +
+        '&loop=1&playlist=' + id + '&start=' + START + '&enablejsapi=1&origin=' + encodeURIComponent(location.origin);
+      frame.title = 'Charlie Dallas Lancaster Foundation film (silent preview)';
+      frame.allow = 'autoplay; encrypted-media';
+      frame.tabIndex = -1; frame.setAttribute('aria-hidden', 'true');
+      frame.addEventListener('load', function () {
+        // Ask the player to report its state and time back to this page.
+        frame.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 'reel', channel: 'widget' }), '*');
+        // If the player never reports (blocked messaging), just show it.
+        setTimeout(function () { if (!heard) frame.classList.add('ready'); }, 5000);
+      });
+      media.appendChild(frame);
+      pauseBtn.hidden = false;
+    }
+
+    if (!still) {
+      // Don't compete with the page itself: start the loop only after everything else has loaded.
+      var afterLoad = function (fn) {
+        var go = function () { setTimeout(fn, 1200); };
+        if (document.readyState === 'complete') go(); else addEventListener('load', go, { once: true });
+      };
+      afterLoad(function () {
+        new IntersectionObserver(function (entries) {
+          var e = entries[0];
+          if (e.isIntersecting && !frame) (card.dataset.mp4 ? startClip : startLoop)();
+          // Rest the loop while it is off screen; resume unless the visitor paused it.
+          else if (frame && !userPaused && !filmDlg.open) setPaused(!e.isIntersecting);
+        }, { rootMargin: '200px 0px' }).observe(card);
+      });
+    }
+    pauseBtn.addEventListener('click', function () { userPaused = !paused; setPaused(!paused); });
+
+    // Watch with sound: full player in a dialog; the card loop rests underneath and resumes on close.
+    var filmDlg = document.getElementById('film-dialog'), filmBox = filmDlg.querySelector('.film-frame');
+    soundBtn.addEventListener('click', function () {
+      var f = document.createElement('iframe');
+      f.src = embed + '?autoplay=1&controls=1&rel=0&playsinline=1';
+      f.title = 'Charlie Dallas Lancaster Foundation film';
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      filmBox.replaceChildren(f);
+      if (frame) setPaused(true);
+      filmDlg.showModal();
+    });
+    filmDlg.addEventListener('close', function () {
+      filmBox.replaceChildren();
+      if (frame && !userPaused) setPaused(false);
+      soundBtn.focus();
+    });
+    filmDlg.querySelector('[data-close-film]').addEventListener('click', function () { filmDlg.close(); });
+    filmDlg.addEventListener('click', function (e) { if (e.target === filmDlg) filmDlg.close(); });
+  }
+
+  // TODO: post to the foundation's existing mailing-list provider; this only validates the address.
+  var form = document.querySelector('.signup');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var input = form.querySelector('input'), msg = form.querySelector('.signup-msg');
+    if (!input.value || !input.checkValidity()) {
+      msg.textContent = 'Enter an email address like name@example.com.';
+      input.setAttribute('aria-invalid', 'true'); input.focus(); return;
+    }
+    input.removeAttribute('aria-invalid');
+    msg.textContent = 'Thank you. You are on the list.';
+    form.reset();
+  });
+})();
+
+/* ---------- Motion (GSAP) ---------- */
+(function () {
+  var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (calm || !window.gsap) { document.documentElement.classList.remove('motion'); return; }
+  clearTimeout(window.__revealFallback);
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  var ease = 'expo.out';
+
+  // Wraps each letter of an element in its own span, grouped per word so lines only wrap between words.
+  // (Done by hand rather than with SplitText so the quote can start before every web font has arrived.)
+  function splitChars(el) {
+    var chars = [];
+    Array.prototype.slice.call(el.childNodes).forEach(function (node) {
+      if (node.nodeType === 1) { chars = chars.concat(splitChars(node)); return; }
+      if (node.nodeType !== 3) return;
+      var frag = document.createDocumentFragment();
+      node.textContent.split(/(\s+)/).forEach(function (part) {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+        var word = document.createElement('span'); word.className = 'w';
+        part.split('').forEach(function (c) {
+          var ch = document.createElement('span'); ch.className = 'ch'; ch.textContent = c;
+          word.appendChild(ch); chars.push(ch);
+        });
+        frag.appendChild(word);
+      });
+      node.replaceWith(frag);
+    });
+    return chars;
+  }
+
+  // Wait for the handwriting font, but never more than a second: on a slow connection the quote
+  // simply fades in (in whatever font has arrived) rather than leaving the headline blank.
+  var handFont = document.fonts.load('400 1em "Caveat Brush"').then(function (f) { return f.length > 0; }, function () { return false; });
+  var oneSecond = new Promise(function (r) { setTimeout(function () { r(false); }, 1000); });
+  Promise.race([handFont, oneSecond]).then(function (fontReady) {
+    // 1. The one orchestrated moment: the sun paints in and Charlie's words write themselves,
+    //    letter by letter, left to right, with a breath at the end of each line.
+    // Clear the pre-JS hiding first, so each from() below animates back to fully visible.
+    gsap.set('.hero-quote blockquote, .hero-name, .hero-cta, .hero-logo .lettering, .hero-quote figcaption', { opacity: 1 });
+    var tl = gsap.timeline({ defaults: { ease: ease } });
+    tl.from('.hero-name', { y: 12, opacity: 0, duration: 1 }, 0.1)
+      .from('.hero-logo .lettering', { opacity: 0, scale: 0.97, duration: 1.6 }, 0.7)
+      .from('.hero-cta > *', { y: 16, opacity: 0, duration: 1, stagger: 0.08 }, 1.2);
+    var t = 0.45, PER_CHAR = 0.036;
+    if (fontReady) {
+      // Screen readers get the sentence once, whole; the letter-by-letter copy is hidden from them.
+      var quoteP = document.querySelector('.hero-quote blockquote p');
+      var spoken = document.createElement('span');
+      spoken.className = 'sr-only'; spoken.textContent = quoteP.textContent.replace(/\s+/g, ' ').trim();
+      quoteP.prepend(spoken);
+      gsap.utils.toArray('.hero-quote .ln').forEach(function (line) {
+        line.setAttribute('aria-hidden', 'true');
+        var chars = splitChars(line);
+        tl.fromTo(chars,
+          { clipPath: 'inset(-30% 110% -30% -10%)' },   // fully closed: no glyph overhang peeks out early
+          { clipPath: 'inset(-30% -10% -30% -10%)', duration: 0.16, ease: 'power1.inOut', stagger: PER_CHAR }, t);
+        t += chars.length * PER_CHAR + 0.32;
+      });
+    } else {
+      tl.from('.hero-quote blockquote', { opacity: 0, y: 14, duration: 1.2 }, 0.2);
+      t = 0.9;
+    }
+    tl.from('.hero-quote figcaption', { opacity: 0, x: -12, duration: 1 }, t - 0.1);
+    window.dispatchEvent(new CustomEvent('hero:intro'));
+
+    // 2. The mission sentence reads itself in as you scroll (split once all fonts are in, so words measure true).
+    document.fonts.ready.then(function () {
+      var words = SplitText.create('[data-words]', { type: 'words' });
+      gsap.fromTo(words.words, { opacity: 0.22 }, {
+        opacity: 1, ease: 'none', stagger: 0.1,
+        scrollTrigger: { trigger: '[data-words]', start: 'top 82%', end: 'bottom 45%', scrub: 0.6 }
+      });
+      ScrollTrigger.refresh();
+    });
+
+    // 3. Quiet entrances for everything else (once).
+    gsap.utils.toArray('[data-reveal]').forEach(function (el) {
+      gsap.fromTo(el, { opacity: 0, y: 28 }, {
+        opacity: 1, y: 0, duration: 1.2, ease: ease,
+        scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+      });
+    });
+
+    // 4. Impact numbers count up once.
+    document.querySelectorAll('[data-count]').forEach(function (el) {
+      var end = +el.dataset.count, pre = el.dataset.prefix || '', suf = el.dataset.suffix || '';
+      var o = { v: 0 };
+      el.textContent = pre + '0' + suf;
+      gsap.to(o, {
+        v: end, duration: 2.2, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+        onUpdate: function () { el.textContent = pre + Math.round(o.v).toLocaleString('en-GB') + suf; }
+      });
+    });
+
+    // 5. A Mile a Life: the walk photo opens from a window to full bleed, pinned while it does.
+    var stage = document.querySelector('.amal-stage');
+    var mm = gsap.matchMedia();
+    mm.add({ wide: '(min-width: 861px)', narrow: '(max-width: 860px)' }, function (ctx) {
+      var start = ctx.conditions.wide ? '14% 24%' : '18% 8%';
+      gsap.timeline({
+        scrollTrigger: { trigger: stage, start: 'top top', end: '+=90%', scrub: 0.8, pin: true, anticipatePin: 1 }
+      })
+        .fromTo('.amal-frame', { '--clip': start }, { '--clip': '0% 0%', ease: 'none' }, 0)
+        .fromTo('.amal-frame img', { '--zoom': 1.12 }, { '--zoom': 1, ease: 'none' }, 0);
+    });
+
+    // 6. Montage: the walk photos wipe up in sequence as they arrive, each settling from a slight zoom.
+    gsap.set('.montage figure', { clipPath: 'inset(100% 0% 0% 0% round 20px)' });
+    ScrollTrigger.batch('.montage figure', {
+      start: 'top 88%', once: true,
+      onEnter: function (batch) {
+        gsap.fromTo(batch, { clipPath: 'inset(100% 0% 0% 0% round 20px)' },
+          { clipPath: 'inset(0% 0% 0% 0% round 20px)', duration: 1.3, ease: ease, stagger: 0.12 });
+        gsap.fromTo(batch.map(function (f) { return f.querySelector('img'); }), { scale: 1.15 },
+          { scale: 1, duration: 1.8, ease: ease, stagger: 0.12, clearProps: 'transform' });
+      }
+    });
+  });
+})();
+</script>
+
+<!-- ---------- The sun (plain WebGL, no library) ---------- -->
+<!-- The logo's hand-painted disc, drawn by one small shader as a slowly breathing painted shape behind the lettering. -->
+<script>
+(function () {
+  var canvas = document.querySelector('.sun-canvas');
+  var calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var gl = canvas && (canvas.getContext('webgl', { alpha: true, antialias: true, premultipliedAlpha: true }));
+  if (!gl) { if (canvas) canvas.remove(); return; }   // the CSS disc underneath takes over
+
+  var VERT = 'attribute vec2 pos; varying vec2 vUv; void main(){ vUv = pos * .5 + .5; gl_Position = vec4(pos, 0., 1.); }';
+  var FRAG = [
+    'precision highp float;',
+    'varying vec2 vUv;',
+    'uniform float uTime, uReveal, uScroll, uPx;',
+    'uniform vec2 uPointer;',
+    'uniform vec3 uColor;',
+    'float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }',
+    'float noise(vec2 p){ vec2 i = floor(p), f = fract(p); vec2 u = f*f*(3.-2.*f);',
+    '  return mix(mix(hash(i), hash(i+vec2(1,0)), u.x), mix(hash(i+vec2(0,1)), hash(i+vec2(1,1)), u.x), u.y); }',
+    'float fbm(vec2 p){ float v = 0., a = .5; for(int i=0;i<5;i++){ v += a*noise(p); p *= 2.03; a *= .5; } return v; }',
+    'void main(){',
+    // Centre and size measured from the original logo artwork, so the lettering sits exactly as designed.
+    '  vec2 p = vUv - vec2(.441, .5);',
+    '  p.x /= 1.04;',                              // the painted disc is very slightly wider than tall
+    '  p -= uPointer * .008;',                     // the disc leans a touch toward the cursor
+    '  float a = atan(p.y, p.x); float r = length(p);',
+    '  vec2 ring = vec2(cos(a), sin(a));',
+    // Hand-painted edge: low-frequency wobble plus a little brush tooth, drifting very slowly.
+    '  float wob = fbm(ring * 1.4 + uTime * .035) - .5;',
+    '  float tooth = (noise(ring * 18. + uTime * .05) - .5) * .25;',
+    '  float R = .322 * uReveal * (1. + .04 * wob + .012 * tooth) * (1. + .03 * uScroll);',
+    '  float aa = uPx * 1.5;',
+    '  float alpha = 1. - smoothstep(R - aa, R + aa, r);',
+    // Paint inside the disc: soft directional brush streaks and a slightly warmer core.
+    '  vec2 q = mat2(.86, -.5, .5, .86) * p;',
+    '  float streak = fbm(vec2(q.x * 3., q.y * 26.) + uTime * .01);',
+    '  vec3 col = uColor * (0.955 + streak * .085);',
+    '  col = mix(col, col * vec3(1.02, .98, .93), smoothstep(.0, R, r) * .5);',
+    '  gl_FragColor = vec4(col * alpha, alpha);',  // premultiplied, so the edge has no dark fringe
+    '}'
+  ].join('\n');
+
+  function shader(type, src) { var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; }
+  var prog = gl.createProgram();
+  gl.attachShader(prog, shader(gl.VERTEX_SHADER, VERT));
+  gl.attachShader(prog, shader(gl.FRAGMENT_SHADER, FRAG));
+  gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { canvas.remove(); return; }
+  gl.useProgram(prog);
+
+  // One triangle that covers the whole canvas.
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+  var loc = gl.getAttribLocation(prog, 'pos');
+  gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+
+  var U = {};
+  ['uTime', 'uReveal', 'uScroll', 'uPx', 'uPointer', 'uColor'].forEach(function (n) { U[n] = gl.getUniformLocation(prog, n); });
+  gl.uniform3f(U.uColor, 1.0, 0.698, 0.141);   // #FFB224
+  var state = { reveal: calm ? 1 : 0, px: 0, py: 0, tx: 0, ty: 0 };
+
+  function render(t) {
+    gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.uniform1f(U.uTime, t || 0);
+    gl.uniform1f(U.uReveal, state.reveal);
+    gl.uniform1f(U.uScroll, Math.min(1, scrollY / innerHeight));
+    gl.uniform2f(U.uPointer, state.px, state.py);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  }
+  function resize() {
+    var dpr = Math.min(devicePixelRatio, 2), w = Math.round(canvas.clientWidth * dpr), h = Math.round(canvas.clientHeight * dpr);
+    if (!w || !h) return;
+    canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h);
+    gl.uniform1f(U.uPx, 1 / w);
+    render(performance.now() / 1000);              // resizing clears the canvas, so repaint straight away
+  }
+  new ResizeObserver(resize).observe(canvas); resize();
+  if (calm) return;
+
+  // Paint the disc in as part of the hero intro.
+  var started = false;
+  function startReveal() {
+    if (started) return; started = true;
+    if (window.gsap) gsap.to(state, { reveal: 1, duration: 2.4, ease: 'expo.out', delay: 0.05 }); else state.reveal = 1;
+  }
+  addEventListener('hero:intro', startReveal, { once: true });
+  setTimeout(startReveal, 1800);
+
+  addEventListener('pointermove', function (e) {
+    state.tx = (e.clientX / innerWidth) * 2 - 1; state.ty = -((e.clientY / innerHeight) * 2 - 1);
+  }, { passive: true });
+
+  var visible = true, raf = 0, t0 = performance.now();
+  new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible && !raf) loop(); }).observe(canvas);
+  function loop() {
+    if (!visible) { raf = 0; return; }
+    raf = requestAnimationFrame(loop);
+    state.px += (state.tx - state.px) * 0.04; state.py += (state.ty - state.py) * 0.04;
+    render((performance.now() - t0) / 1000);
+  }
+  loop();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+# Local preview server (development only)
+.claude/
+
+# Full-size originals the web images were made from; not part of the site
+source-images/
+
+# OS clutter
+Thumbs.db
+.DS_Store
