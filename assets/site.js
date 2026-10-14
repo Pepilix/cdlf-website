@@ -51,8 +51,42 @@
      and fades back to the poster just before each loop, so the card never shows black or a spinner.
      data-start / data-end on the card pick which part of the film loops (seconds; end 0 = whole film).
      "Watch with sound" opens the full player in a dialog. Reduced motion: poster only, no loop. */
+  /* Film pop-up: plays a YouTube film with sound and controls. Any button with data-film="<YouTube id>"
+     opens it (optionally data-film-title for the player's accessible name); the home film card uses it too. */
+  var filmDlg = document.getElementById('film-dialog'), filmBox = filmDlg && filmDlg.querySelector('.film-frame');
+  var filmReturn = null, filmClosed = null;
+  function openFilm(id, opener, onClose) {
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&controls=1&rel=0&playsinline=1';
+    f.title = (opener && opener.dataset.filmTitle) || 'Charlie Dallas Lancaster Foundation film';
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    filmBox.replaceChildren(f);
+    filmReturn = opener || null; filmClosed = onClose || null;
+    filmDlg.showModal();
+  }
+  // Stop the film and hand focus back. Called directly by every way of closing, rather than relying only on
+  // the dialog's "close" event, which some browsers deliver late or not at all; safe to call more than once.
+  function filmCleanup() {
+    if (!filmBox.firstChild && !filmClosed && !filmReturn) return;
+    filmBox.replaceChildren();
+    var done = filmClosed, back = filmReturn;
+    filmClosed = null; filmReturn = null;
+    if (done) done();
+    if (back) back.focus();
+  }
+  function closeFilm() { if (filmDlg.open) filmDlg.close(); filmCleanup(); }
+  if (filmDlg) {
+    filmDlg.addEventListener('close', filmCleanup);
+    filmDlg.addEventListener('cancel', function (e) { e.preventDefault(); closeFilm(); });   // Escape key
+    filmDlg.querySelector('[data-close-film]').addEventListener('click', closeFilm);
+    filmDlg.addEventListener('click', function (e) { if (e.target === filmDlg) closeFilm(); });
+    document.querySelectorAll('[data-film]').forEach(function (btn) {
+      btn.addEventListener('click', function () { openFilm(btn.dataset.film, btn); });
+    });
+  }
+
   var card = document.querySelector('.reel-card');
-  if (card) {
+  if (card && filmDlg) {
     var id = card.dataset.yt, media = card.querySelector('.reel-media');
     var START = +card.dataset.start || 0, END = +card.dataset.end || 0;
     var soundBtn = card.querySelector('[data-reel="sound"]'), pauseBtn = card.querySelector('[data-reel="pause"]');
@@ -145,25 +179,55 @@
     }
     pauseBtn.addEventListener('click', function () { userPaused = !paused; setPaused(!paused); });
 
-    // Watch with sound: full player in a dialog; the card loop rests underneath and resumes on close.
-    var filmDlg = document.getElementById('film-dialog'), filmBox = filmDlg.querySelector('.film-frame');
+    // Watch with sound: full player in the pop-up; the card loop rests underneath and resumes on close.
     soundBtn.addEventListener('click', function () {
-      var f = document.createElement('iframe');
-      f.src = embed + '?autoplay=1&controls=1&rel=0&playsinline=1';
-      f.title = 'Charlie Dallas Lancaster Foundation film';
-      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
-      filmBox.replaceChildren(f);
       if (frame) setPaused(true);
-      filmDlg.showModal();
+      openFilm(id, soundBtn, function () { if (frame && !userPaused) setPaused(false); });
     });
-    filmDlg.addEventListener('close', function () {
-      filmBox.replaceChildren();
-      if (frame && !userPaused) setPaused(false);
-      soundBtn.focus();
-    });
-    filmDlg.querySelector('[data-close-film]').addEventListener('click', function () { filmDlg.close(); });
-    filmDlg.addEventListener('click', function (e) { if (e.target === filmDlg) filmDlg.close(); });
   }
+
+  /* Donation form (form[data-paypal]): the same PayPal settings as the original cdlf.uk donate page.
+     One-off: cmd=_donations with "amount". Monthly: cmd=_xclick-subscriptions with a3/p3/t3/src.
+     Without JavaScript the preset one-off amounts still work, and the monthly option stays hidden. */
+  document.querySelectorAll('form[data-paypal]').forEach(function (form) {
+    var monthlyOpt = form.querySelector('[data-monthly-option]'), submit = form.querySelector('[type=submit]');
+    var custom = form.querySelector('input[name=custom_amount]'), otherRadio = form.querySelector('input[name=amount][value=""]');
+    var err = form.querySelector('.donate-error');
+    if (monthlyOpt) monthlyOpt.hidden = false;
+    function freq() { var r = form.querySelector('input[name=frequency]:checked'); return r ? r.value : 'single'; }
+    function amount() {
+      var r = form.querySelector('input[name=amount]:checked');
+      if (!r) return '';
+      return r === otherRadio ? (custom.value || '').trim().replace(/^£/, '') : r.value;
+    }
+    function valid(a) { return /^\d+(\.\d{1,2})?$/.test(a) && parseFloat(a) >= 1; }
+    function label() {
+      var a = amount(), m = freq() === 'monthly';
+      var money = valid(a) ? '£' + (parseFloat(a) % 1 ? parseFloat(a).toFixed(2) : parseFloat(a)) : '';
+      submit.textContent = money ? 'Donate ' + money + (m ? ' a month' : '') + ' with PayPal' : 'Donate with PayPal';
+    }
+    form.addEventListener('change', function (e) {
+      if (e.target === otherRadio) custom.focus();
+      label();
+    });
+    custom.addEventListener('focus', function () { otherRadio.checked = true; label(); });
+    // Typing an amount (or autofill) always means "Other", even if the box was never focused first.
+    custom.addEventListener('input', function () { otherRadio.checked = true; label(); });
+    form.addEventListener('submit', function (e) {
+      var a = amount();
+      if (!valid(a)) {
+        e.preventDefault();
+        err.textContent = 'Please enter an amount of £1 or more, for example 15 or 12.50.';
+        custom.setAttribute('aria-invalid', 'true'); otherRadio.checked = true; custom.focus();
+        return;
+      }
+      err.textContent = ''; custom.removeAttribute('aria-invalid');
+      otherRadio.value = a;                                  // so "amount" carries a custom value too
+      form.querySelector('input[name=a3]').value = a;
+      form.querySelector('input[name=cmd]').value = freq() === 'monthly' ? '_xclick-subscriptions' : '_donations';
+    });
+    label();
+  });
 
   /* Enquiry forms (form[data-mailto]): check each field, then open the visitor's email app with the
      message written out. Nothing is sent from the website itself, and the form says so.
@@ -176,25 +240,33 @@
       if (message) field.setAttribute('aria-invalid', 'true'); else field.removeAttribute('aria-invalid');
     }
     function message(field) {
-      if (field.validity.valueMissing) return field.type === 'checkbox' ? 'Please tick this box so we can reply to you.' : 'Please fill in this field.';
+      if (field.validity.valueMissing) return field.type === 'checkbox' ? 'Please tick this box so we can reply to you.' : field.tagName === 'SELECT' ? 'Please choose an option.' : 'Please fill in this field.';
       if (field.validity.typeMismatch) return 'Enter an email address like name@example.com.';
       return '';
     }
-    form.querySelectorAll('input, textarea').forEach(function (f) {
+    var fields = form.querySelectorAll('input, textarea, select');
+    fields.forEach(function (f) {
       f.addEventListener('blur', function () { if (f.value || f.type === 'checkbox') fieldError(f, message(f)); });
     });
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var firstBad = null;
-      form.querySelectorAll('input, textarea').forEach(function (f) {
+      fields.forEach(function (f) {
         var m = message(f); fieldError(f, m);
         if (m && !firstBad) firstBad = f;
       });
       if (firstBad) { status.textContent = 'Please check the highlighted fields.'; firstBad.focus(); return; }
       var v = function (name) { var el = form.elements[name]; return el ? el.value.trim() : ''; };
-      var subject = form.dataset.subject + (v('business') ? ' from ' + v('business') : '');
-      var body = ['Name: ' + v('name'), 'Business: ' + v('business'), 'Email: ' + v('email'), v('phone') ? 'Phone: ' + v('phone') : '', '', v('message')]
-        .filter(function (line, i) { return line !== '' || i === 4; }).join('\n');
+      // Subject: the form's own subject, plus the topic or business name when the form has one.
+      var subject = form.dataset.subject + (v('topic') ? ': ' + v('topic') : '') + (v('business') ? ' from ' + v('business') : '');
+      // Body: every filled-in field as "Label: value", with the message last.
+      var lines = [];
+      fields.forEach(function (f) {
+        if (f.type === 'checkbox' || f.name === 'message' || f.name === 'topic' || !f.value.trim()) return;
+        var lab = form.querySelector('label[for="' + f.id + '"]');
+        lines.push((lab ? lab.textContent.replace(/\(optional\)/, '').trim() : f.name) + ': ' + f.value.trim());
+      });
+      var body = lines.concat(['', v('message')]).join('\n');
       status.textContent = 'Your email app should now open with your message ready to send. If it does not, email us at ' + form.dataset.mailto + '.';
       window.location.href = 'mailto:' + form.dataset.mailto + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     });

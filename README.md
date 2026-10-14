@@ -11,6 +11,12 @@ This is a **team preview**, not the live site. Every page carries a `noindex` ta
 | `/` | `index.html` | Home: Charlie, the film, ways in, impact, A Mile a Life, partners |
 | `/help/` | `help/index.html` | Find mental health support. Works with JavaScript off, because it's the landing page for the QR codes on the support boards. |
 | `/corporate-partnerships/` | `corporate-partnerships/index.html` | How businesses can support CDLF, with an enquiry form |
+| `/charlies-story/` | `charlies-story/index.html` | Charlie's story, photos and memories |
+| `/our-impact/` | `our-impact/index.html` | Grants, support boards, recent fundraising |
+| `/get-involved/` | `get-involved/index.html` | Donation form (PayPal) and ways to fundraise |
+| `/a-mile-a-life/` | `a-mile-a-life/index.html` | The annual walk, its film and other events |
+| `/about/` | `about/index.html` | Team, ambassadors, partner charities |
+| `/contact/` | `contact/index.html` | Contact details and message form |
 | `/help.html` | `help.html` | Redirect to `/help/`, so earlier preview links keep working |
 
 ## Shared code
@@ -18,7 +24,7 @@ This is a **team preview**, not the live site. Every page carries a `noindex` ta
 | File | What it does |
 |---|---|
 | `assets/site.css` | All shared styles: tokens, header and drop-down menu, buttons, cards, sections, footer, dialogs, forms |
-| `assets/site.js` | Header, menu, crisis pop-up, smooth in-page links, film card, enquiry form |
+| `assets/site.js` | Header, menu, crisis pop-up, smooth in-page links, film card and film pop-up, donation form, enquiry forms |
 | `index.html` (inline) | Home-only extras: the GSAP animations and the WebGL logo disc |
 | `help/index.html` (inline) | Its own small stylesheet, with no web fonts or scripts, so it loads fast |
 
