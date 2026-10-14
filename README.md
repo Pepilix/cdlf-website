@@ -2,32 +2,43 @@
 
 A static redesign of [cdlf.uk](https://cdlf.uk) for the Charlie Dallas Lancaster Foundation (registered charity no. 1195207).
 
-This is a **team preview**, not the live site. Both pages carry a `noindex` tag so search engines skip them.
+This is a **team preview**, not the live site. Every page carries a `noindex` tag, so search engines skip it. Canonical and sharing URLs point at the production domain, never at GitHub Pages.
 
-## What's here
+## Pages
 
-| File | What it is |
+| URL | File | Purpose |
+|---|---|---|
+| `/` | `index.html` | Home: Charlie, the film, ways in, impact, A Mile a Life, partners |
+| `/help/` | `help/index.html` | Find mental health support. Works with JavaScript off, because it's the landing page for the QR codes on the support boards. |
+| `/corporate-partnerships/` | `corporate-partnerships/index.html` | How businesses can support CDLF, with an enquiry form |
+| `/help.html` | `help.html` | Redirect to `/help/`, so earlier preview links keep working |
+
+## Shared code
+
+| File | What it does |
 |---|---|
-| `index.html` | Home page |
-| `help.html` | "Need help now?" page. It works with JavaScript off, because it's the landing page for the QR codes on the support boards. |
-| `assets/` | Photos (WebP, up to 3 sizes each), logo, partner logos and icons |
-| `site-audit.md` | Pre-launch audit, with what's fixed and what's on hold |
+| `assets/site.css` | All shared styles: tokens, header and drop-down menu, buttons, cards, sections, footer, dialogs, forms |
+| `assets/site.js` | Header, menu, crisis pop-up, smooth in-page links, film card, enquiry form |
+| `index.html` (inline) | Home-only extras: the GSAP animations and the WebGL logo disc |
+| `help/index.html` (inline) | Its own small stylesheet, with no web fonts or scripts, so it loads fast |
 
-No build step. It's plain HTML, CSS and JavaScript. GSAP is loaded from cdnjs, and fonts from Google Fonts.
+There's no build step: plain HTML, CSS and JavaScript. GSAP comes from cdnjs and fonts from Google Fonts.
+
+## Production SEO files
+- **`robots.txt` and `sitemap.xml`:** written for `https://cdlf.uk/`. On GitHub Pages they sit in a sub-folder, so search engines ignore them there.
+- **`assets/og-image.jpg`:** the 1200×630 social sharing image.
 
 ## Run it locally
-Open the folder with any static file server, for example:
 
 ```bash
 npx serve .
 ```
 
 ## Before launch
-- Remove the `noindex` meta tag from both pages.
-- Finish the items marked "on hold" in `site-audit.md`:
-  - social sharing tags and image
-  - newsletter form connection
-  - canonical URLs and page title
-  - `sitemap.xml` and `robots.txt`
-  - structured data and FAQ
-- Point the menu links at the new pages as each one is built. They currently go to the existing cdlf.uk pages.
+See **[LAUNCH.md](LAUNCH.md)** for:
+- placeholders awaiting trustee approval
+- facts to confirm
+- integrations to connect
+- the technical launch steps
+
+The earlier audit is in `site-audit.md`.

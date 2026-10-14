@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Production sitemap: list only live https://cdlf.uk/ URLs. Add each new page as it launches. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://cdlf.uk/</loc>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://cdlf.uk/help/</loc>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://cdlf.uk/corporate-partnerships/</loc>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+</urlset>

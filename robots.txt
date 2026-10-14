@@ -1,0 +1,7 @@
+# Production robots.txt for https://cdlf.uk/
+# (On the GitHub Pages preview this file sits in a sub-folder, so search engines ignore it there;
+#  the preview is kept out of search by the noindex tag on each page instead.)
+User-agent: *
+Allow: /
+
+Sitemap: https://cdlf.uk/sitemap.xml
