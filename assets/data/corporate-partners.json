@@ -1,0 +1,10 @@
+{
+  "_instructions": [
+    "Annual corporate partners shown in 'Our corporate partners' on /corporate-partnerships/.",
+    "Add a partner ONLY after the trustees have approved the partnership and the business has agreed to be listed.",
+    "Each partner is shown only when 'approved' is true and today's date is between 'start' and 'end' (inclusive), so expired partnerships drop off by themselves.",
+    "Fields: name (required); tier: 'Community Partner', 'Impact Partner' or 'Foundation Partner'; logo: path from the site root such as 'assets/partners/business-name.webp' (only with the business's permission), or null to show the name instead; website: full https:// address (only if approved), or null; start and end: dates as YYYY-MM-DD; approved: true or false.",
+    "Example entry (copy into 'partners' and edit): { \"name\": \"Business Name Ltd\", \"tier\": \"Community Partner\", \"logo\": null, \"website\": null, \"start\": \"2027-01-01\", \"end\": \"2027-12-31\", \"approved\": false }"
+  ],
+  "partners": []
+}

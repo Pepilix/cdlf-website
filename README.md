@@ -24,11 +24,15 @@ This is a **team preview**, not the live site. Every page carries a `noindex` ta
 | File | What it does |
 |---|---|
 | `assets/site.css` | All shared styles: tokens, header and drop-down menu, buttons, cards, sections, footer, dialogs, forms |
-| `assets/site.js` | Header, menu, crisis pop-up, smooth in-page links, film card and film pop-up, donation form, enquiry forms |
+| `assets/site.js` | Header, menu, crisis pop-up, smooth in-page links, film card and film pop-up, donation form, enquiry forms, partnership pre-selection, partnership pack check, corporate partner directory |
 | `index.html` (inline) | Home-only extras: the GSAP animations and the WebGL logo disc |
 | `help/index.html` (inline) | Its own small stylesheet, with no web fonts or scripts, so it loads fast |
 
 There's no build step: plain HTML, CSS and JavaScript. GSAP comes from cdnjs and fonts from Google Fonts.
+
+## Content files
+- **`assets/data/corporate-partners.json`:** the corporate partner directory. Instructions are inside the file.
+- **`assets/downloads/`:** put the approved partnership pack here as `cdlf-corporate-partnership-pack.pdf`.
 
 ## Production SEO files
 - **`robots.txt` and `sitemap.xml`:** written for `https://cdlf.uk/`. On GitHub Pages they sit in a sub-folder, so search engines ignore them there.

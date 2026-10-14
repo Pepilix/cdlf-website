@@ -229,6 +229,79 @@
     label();
   });
 
+  /* Partnership buttons (a[data-partnership]): pre-select that option in the enquiry form. The link's own
+     #contact-form target (and the smooth-scroll handler above) takes the visitor to the form; focus then
+     moves to the choice so keyboard and screen-reader users land where they can confirm or change it. */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-partnership]');
+    var sel = document.querySelector('select[name=topic]');
+    if (!a || !sel) return;
+    var want = a.dataset.partnership;
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].text === want) { sel.selectedIndex = i; break; }
+    }
+    sel.removeAttribute('aria-invalid');
+    var err = document.getElementById(sel.id + '-error'); if (err) err.textContent = '';
+    setTimeout(function () { sel.focus({ preventScroll: true }); }, 700);
+  });
+
+  /* Partnership pack ([data-pack]): the download button appears only once the PDF actually exists at the
+     given path, so the page never links to a missing file. Until then the placeholder stays. */
+  document.querySelectorAll('[data-pack]').forEach(function (box) {
+    var src = box.dataset.pack, ready = box.querySelector('[data-pack-ready]'), pending = box.querySelector('[data-pack-pending]');
+    fetch(src, { method: 'HEAD', cache: 'no-store' }).then(function (r) {
+      var type = r.headers.get('content-type') || '';
+      if (!r.ok || /text\/html/.test(type)) return;
+      ready.href = src; ready.setAttribute('download', ''); ready.hidden = false;
+      if (pending) pending.hidden = true;
+    }).catch(function () {});
+  });
+
+  /* Corporate partner directory ([data-partner-directory]): reads the JSON file and lists approved partners
+     whose partnership is current. Foundation, then Impact, then Community partners, each in name order. */
+  function renderPartners(list, root) {
+    var dir = document.querySelector('[data-partner-directory]'), empty = document.querySelector('[data-partner-empty]');
+    if (!dir) return 0;
+    var today = new Date().toISOString().slice(0, 10), rank = { 'Foundation Partner': 0, 'Impact Partner': 1, 'Community Partner': 2 };
+    var current = (list || []).filter(function (p) {
+      return p && p.approved === true && p.name && p.start && p.end && p.start <= today && today <= p.end;
+    }).sort(function (a, b) { return ((rank[a.tier] ?? 3) - (rank[b.tier] ?? 3)) || a.name.localeCompare(b.name); });
+    dir.replaceChildren();
+    current.forEach(function (p) {
+      var li = document.createElement('li');
+      var mark;
+      if (p.logo) {
+        mark = document.createElement('img');
+        mark.src = (root || '') + p.logo; mark.alt = p.name + ' logo'; mark.loading = 'lazy';
+      } else {
+        mark = document.createElement('span'); mark.className = 'partner-name'; mark.setAttribute('aria-hidden', 'true');
+        mark.textContent = p.name.split(/\s+/).map(function (w) { return w[0]; }).join('').slice(0, 3).toUpperCase();
+      }
+      var body = document.createElement('div');
+      var h = document.createElement('h3'); h.textContent = p.name;
+      var tier = document.createElement('p'); tier.className = 'tier'; tier.textContent = p.tier || 'Corporate Partner';
+      var since = document.createElement('p');
+      since.textContent = 'Partner since ' + new Date(p.start + 'T12:00:00').toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }) + '.';
+      body.append(h, tier, since);
+      if (p.website && /^https:\/\//.test(p.website)) {
+        var a = document.createElement('a'); a.href = p.website; a.textContent = 'Visit ' + p.name + ' (external site)';
+        since.append(' '); since.append(a);
+      }
+      li.append(mark, body); dir.append(li);
+    });
+    dir.hidden = current.length === 0;
+    if (empty) empty.hidden = current.length > 0;
+    return current.length;
+  }
+  var dirEl = document.querySelector('[data-partner-directory]');
+  if (dirEl) {
+    fetch(dirEl.dataset.partnerDirectory, { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : { partners: [] }; })
+      .then(function (data) { renderPartners(data.partners, dirEl.dataset.root); })
+      .catch(function () {});
+  }
+  window.CDLF = { renderPartners: renderPartners };   // lets the directory be previewed or tested with sample data
+
   /* Enquiry forms (form[data-mailto]): check each field, then open the visitor's email app with the
      message written out. Nothing is sent from the website itself, and the form says so.
      To connect a form service at launch, point the form's action at it and remove data-mailto (see LAUNCH.md). */

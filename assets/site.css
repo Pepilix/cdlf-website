@@ -584,3 +584,42 @@ dialog.crisis::backdrop { background: rgba(21, 23, 28, .55); backdrop-filter: bl
 .next-link span { color: var(--ink-2); font-size: 1rem; }
 .section-alt { background: var(--paper-2); }
 .section-alt .next-link, .section-alt .memory, .section-alt .highlight { background: #fff; }
+
+/* ---------- Corporate sponsorship programme (corporate partnerships page) ---------- */
+
+/* Four benefits in a balanced two-column grid (reuses .points) */
+.points-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.points-2 p + p { margin-top: 8px; color: var(--ink-3); font-size: 1rem; }
+@media (max-width: 860px) { .points-2 { grid-template-columns: 1fr; } }
+
+/* Partnership packages: equal cards, buttons aligned along the bottom */
+.packages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.package { display: flex; flex-direction: column; gap: 10px; background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: clamp(24px, 3vw, 36px); }
+.package h3 { font-size: clamp(1.45rem, 2.2vw, 1.8rem); }
+.package .price { margin: 0; font-family: var(--serif); font-variation-settings: "SOFT" 100, "opsz" 144; font-weight: 380; font-size: clamp(2.1rem, 3.4vw, 2.8rem); line-height: 1.05; letter-spacing: -0.02em; font-variant-numeric: lining-nums; }
+.package .price span { font-family: var(--sans); font-size: 1rem; font-weight: 400; letter-spacing: 0; color: var(--ink-2); }
+.package .includes { margin: 6px 0 0; font-weight: 600; font-size: 1rem; }
+.ticks { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 10px; }
+.ticks li { position: relative; padding-left: 28px; color: var(--ink-2); font-size: 1rem; line-height: 1.5; }
+.ticks li::before { content: ""; position: absolute; left: 3px; top: .38em; width: 6px; height: 11px; border: solid var(--sun-deep); border-width: 0 2.5px 2.5px 0; transform: rotate(45deg); }
+.package .btn { margin-top: auto; align-self: flex-start; }
+.package-notes { margin-top: 18px; display: grid; gap: 4px; color: var(--ink-2); font-size: 1rem; max-width: 76ch; }
+.package-notes p { margin: 0; }
+@media (max-width: 1000px) { .packages { grid-template-columns: 1fr; } .package .btn { margin-top: 6px; } }
+
+/* Partnership pack download */
+.pack-card { margin-top: clamp(28px, 4vw, 44px); display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 18px clamp(24px, 4vw, 56px); align-items: center; background: var(--paper-2); border-radius: 24px; padding: clamp(22px, 3.5vw, 36px); }
+.pack-card h3 { font-size: clamp(1.4rem, 2.2vw, 1.75rem); margin-bottom: 8px; }
+.pack-card p { margin: 0; color: var(--ink-2); }
+.pack-card .tbc { margin-top: 0; }
+@media (max-width: 860px) { .pack-card { grid-template-columns: 1fr; } }
+
+/* Three remaining "other ways" tiles in one row */
+.ways-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 960px) { .ways-grid-3 { grid-template-columns: 1fr; } }
+
+/* Corporate partner directory (rendered from assets/data/corporate-partners.json) */
+.directory-empty { background: #fff; border: 1px dashed var(--line); border-radius: 20px; padding: 22px 24px; color: var(--ink-2); }
+.directory-empty p { margin: 0; }
+.partner-list .tier { color: var(--sun-deep); font-weight: 600; font-size: .95rem; margin: 0 0 4px; }
+.partner-list .partner-name { display: grid; place-items: center; min-height: 56px; font-weight: 700; text-align: center; color: var(--ink); }
