@@ -117,3 +117,23 @@ Set these up on the live host, so old links, search results and printed material
 6. Submit the sitemap in Google Search Console, then test sharing with the Facebook Sharing Debugger.
 7. Run Lighthouse on all pages. The help page should score 95+ on accessibility and performance.
 8. Recheck every helpline number and opening time on the help page. They were last checked 14 October 2026; recheck at least yearly.
+
+## 7. After launch: trustee login for news and figures (agreed to revisit later)
+
+Discussed 15 October 2026 and deferred until after launch. Until then, trustees send news and figure updates to whoever maintains the site.
+
+**The plan, when revisited:**
+- **Login:** a private page at `cdlf.uk/admin` using Decap CMS (free, open source).
+- **New post:** headline, text (up to 1,000 words), and up to 6 photos, each with alt text.
+  - Each post becomes its own `/news/…` page with its own title, description and sharing image.
+  - Posts are added to the sitemap automatically, and the latest appear on the home page.
+  - Photos are resized automatically.
+- **Website figures:** one form (total given and its period, grants, charities, support boards, latest A Mile a Life miles) that updates Home, Our impact and Corporate partnerships at once. Today the figures are typed separately into each page; search for `IMPACT FIGURES`.
+- **Publishing:** posts go live straight away (agreed). Optionally, the editor can show a short reminder of safe language for talking about suicide.
+
+**What it needs:**
+- **Hosting with logins:** Netlify is recommended (free tier). Trustees are invited by email and use a normal password, with no GitHub accounts needed. Netlify said in 2025 it would retire this login feature, then reversed that in February 2026; check its status when this is picked up.
+- **A small build step** (Eleventy) to turn posts and figures into pages.
+- **From the foundation:** a Netlify account, and the trustees' email addresses for invitations.
+
+This also settles F7 (the News page) and works alongside I4 (the Instagram feed).
