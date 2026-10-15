@@ -18,13 +18,15 @@ This is a **team preview**, not the live site. Every page carries a `noindex` ta
 | `/about/` | `about/index.html` | Team, ambassadors, partner charities |
 | `/contact/` | `contact/index.html` | Contact details and message form |
 | `/help.html` | `help.html` | Redirect to `/help/`, so earlier preview links keep working |
+| `/login/`, `/trustees/`, `/partners/`, `/news/` | (folders) | **Demo only**, for showing the trustees: a pretend login, news posting and figures form that work in the visitor's own browser. Remove before launch (LAUNCH.md, section 8). |
 
 ## Shared code
 
 | File | What it does |
 |---|---|
 | `assets/site.css` | All shared styles: tokens, header and drop-down menu, buttons, cards, sections, footer, dialogs, forms |
-| `assets/site.js` | Header, menu, crisis pop-up, smooth in-page links, film card and film pop-up, donation form, enquiry forms, partnership pre-selection, partnership pack check, corporate partner directory |
+| `assets/site.js` | Header, menu, crisis pop-up, smooth in-page links, film card and film pop-up, donation form, enquiry forms, partnership pre-selection, partnership pack check, corporate partner directory, demo figures (preview only) |
+| `assets/demo.js` | The login demo only. Delete it with the demo pages. |
 | `index.html` (inline) | Home-only extras: the GSAP animations and the WebGL logo disc |
 | `help/index.html` (inline) | Its own small stylesheet, with no web fonts or scripts, so it loads fast |
 

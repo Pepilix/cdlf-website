@@ -345,3 +345,39 @@
     });
   });
 })();
+
+/* ---------- Demo figures (trustee area demonstration; preview hosts only) ----------
+   When someone saves figures in the demo trustee area (/trustees/), they are kept in that browser and shown
+   here instead of the published figures. This never runs on the live domain. Remove with the demo (LAUNCH.md). */
+(function () {
+  if (!/(\.github\.io|^localhost|^127\.)/.test(location.hostname)) return;
+  var f; try { f = JSON.parse(localStorage.getItem('cdlf-demo-figures')); } catch (e) { return; }
+  if (!f) return;
+  var WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+  function num(n) { return Number(n).toLocaleString('en-GB'); }
+  function set(box, value, label, prefix) {
+    var strong = box.querySelector('strong'), span = box.querySelector('span');
+    strong.textContent = (prefix || '') + num(value);
+    if (strong.hasAttribute('data-count')) strong.dataset.count = value;   // home page count-up animation
+    if (span) span.textContent = label;
+  }
+  var found = false;
+  document.querySelectorAll('[data-figure]').forEach(function (box) {
+    found = true;
+    var k = box.dataset.figure;
+    if (k === 'given') set(box, f.given, 'given to mental health charities between June 2021 and ' + f.period + '.', '£');
+    if (k === 'boards') set(box, f.boards, 'support boards placed since 2023, each with a QR code to our help page.');
+    if (k === 'grants') set(box, f.grants, 'grants made between June 2021 and ' + f.period + ', to ' + (f.charities <= 10 ? WORDS[f.charities] : num(f.charities)) + ' charities and services.');
+    if (k === 'amal') { box.querySelector('.when').textContent = f.amalYear; box.querySelector('strong').textContent = num(f.amalMiles) + ' miles'; }
+  });
+  if (!found) return;
+  var note = document.createElement('div');
+  note.className = 'demo-figures-note';
+  note.setAttribute('role', 'status');
+  note.innerHTML = '<span>Demo: showing figures from the trustee area, in this browser only.</span>';
+  var reset = document.createElement('button');
+  reset.type = 'button'; reset.textContent = 'Show published figures';
+  reset.addEventListener('click', function () { try { localStorage.removeItem('cdlf-demo-figures'); } catch (e) {} location.reload(); });
+  note.append(reset);
+  document.body.append(note);
+})();

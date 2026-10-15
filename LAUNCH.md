@@ -110,7 +110,7 @@ Set these up on the live host, so old links, search results and printed material
 ## 6. Launch day, in order
 
 1. Confirm T1–T8, F1–F7 and I1–I5 above.
-2. Remove the `noindex` lines (S8).
+2. Remove the `noindex` lines (S8). Then remove the login demo, or replace it with the real system (section 8).
 3. Deploy the site to the cdlf.uk host, including `robots.txt`, `sitemap.xml` and `assets/og-image.jpg`.
 4. Set up the redirects (section 5), and test each old URL, especially `/help/`.
 5. Make the test donations (I1) and test both enquiry forms (I2).
@@ -137,3 +137,13 @@ Discussed 15 October 2026 and deferred until after launch. Until then, trustees 
 - **From the foundation:** a Netlify account, and the trustees' email addresses for invitations.
 
 This also settles F7 (the News page) and works alongside I4 (the Instagram feed).
+
+## 8. Login demo on the preview (remove before launch)
+
+Added 15 October 2026 so the trustees can try the idea in section 7 before deciding. **It is not a real login:** anyone can "sign in", no password is used, and nothing is sent or stored anywhere except in the visitor's own browser. Each person who tries it starts fresh.
+
+- **Pages:** `/login/` (choose Trustee or Corporate partner), `/trustees/` (post news, update figures), `/partners/` (an example Community Partner), `/news/` (shows demo posts). All are `noindex` and left out of the sitemap.
+- **Figures:** saving figures in the trustee area changes them on Home, Our impact, Corporate partnerships and A Mile a Life, in that browser only, with a "Show published figures" button. This only runs on the GitHub Pages preview and localhost, never on cdlf.uk.
+- **The partner page** uses a made-up business and dates, and a draft badge. The packages are still subject to trustee approval (T-items above).
+
+**To remove it:** delete `login/`, `trustees/`, `partners/`, `news/` and `assets/demo.js`; delete the "Trustee and partner login" links in every footer (search for `login/`); delete the "Demo figures" block at the end of `assets/site.js` and the demo section at the end of `assets/site.css`. The `data-figure` attributes can stay: the real system can use them.
